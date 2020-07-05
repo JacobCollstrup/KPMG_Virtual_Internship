@@ -1,0 +1,362 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20202.20.0525.1210                               -->
+<workbook source-build='2020.2.1 (20202.20.0525.1210)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <_.fcp.MarkAnimation.true...MarkAnimation />
+    <_.fcp.ObjectModelEncapsulateLegacy.true...ObjectModelEncapsulateLegacy />
+    <_.fcp.ObjectModelTableType.true...ObjectModelTableType />
+    <_.fcp.SchemaViewerObjectModel.true...SchemaViewerObjectModel />
+    <SheetIdentifierTracking />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='CustomerDemographic (KPMG_VI_New_raw_data_update_final)' inline='true' name='federated.1ujc3031w3863f18nqjuu1bbtn3p' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='KPMG_VI_New_raw_data_update_final' name='excel-direct.1tymfi808fjaqo1afmjyn04sz98b'>
+            <connection class='excel-direct' cleaning='yes' compat='no' dataRefreshTime='' filename='C:/Users/Jacob Collstrup/Documents/GitHub/KPMG_Virtual_Internship/KPMG_VI_New_raw_data_update_final.xlsx' interpretationMode='1' password='' server='' validate='no' />
+          </named-connection>
+        </named-connections>
+        <_.fcp.ObjectModelEncapsulateLegacy.false...relation connection='excel-direct.1tymfi808fjaqo1afmjyn04sz98b' name='CustomerDemographic' table='[CustomerDemographic$]' type='table'>
+          <columns gridOrigin='A1:M4002:no:A1:M4002:1' header='yes' lost='0' outcome='1' processed='16406'>
+            <column datatype='integer' name='customer_id' ordinal='0' />
+            <column datatype='string' name='first_name' ordinal='1' />
+            <column datatype='string' name='last_name' ordinal='2' />
+            <column datatype='string' name='gender' ordinal='3' />
+            <column datatype='integer' name='past_3_years_bike_related_purchases' ordinal='4' />
+            <column datatype='date' name='DOB' ordinal='5' />
+            <column datatype='string' name='job_title' ordinal='6' />
+            <column datatype='string' name='job_industry_category' ordinal='7' />
+            <column datatype='string' name='wealth_segment' ordinal='8' />
+            <column datatype='string' name='deceased_indicator' ordinal='9' />
+            <column datatype='string' name='default' ordinal='10' />
+            <column datatype='string' name='owns_car' ordinal='11' />
+            <column datatype='integer' name='tenure' ordinal='12' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.false...relation>
+        <_.fcp.ObjectModelEncapsulateLegacy.true...relation connection='excel-direct.1tymfi808fjaqo1afmjyn04sz98b' name='CustomerDemographic' table='[CustomerDemographic$]' type='table'>
+          <columns gridOrigin='A1:M4002:no:A1:M4002:1' header='yes' lost='0' outcome='1' processed='16406'>
+            <column datatype='integer' name='customer_id' ordinal='0' />
+            <column datatype='string' name='first_name' ordinal='1' />
+            <column datatype='string' name='last_name' ordinal='2' />
+            <column datatype='string' name='gender' ordinal='3' />
+            <column datatype='integer' name='past_3_years_bike_related_purchases' ordinal='4' />
+            <column datatype='date' name='DOB' ordinal='5' />
+            <column datatype='string' name='job_title' ordinal='6' />
+            <column datatype='string' name='job_industry_category' ordinal='7' />
+            <column datatype='string' name='wealth_segment' ordinal='8' />
+            <column datatype='string' name='deceased_indicator' ordinal='9' />
+            <column datatype='string' name='default' ordinal='10' />
+            <column datatype='string' name='owns_car' ordinal='11' />
+            <column datatype='integer' name='tenure' ordinal='12' />
+          </columns>
+        </_.fcp.ObjectModelEncapsulateLegacy.true...relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='integer' name='context'>0</attribute>
+              <attribute datatype='string' name='gridOrigin'>&quot;A1:M4002:no:A1:M4002:1&quot;</attribute>
+              <attribute datatype='integer' name='lost'>0</attribute>
+              <attribute datatype='integer' name='outcome'>1</attribute>
+              <attribute datatype='integer' name='processed'>16406</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>customer_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[customer_id]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>customer_id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>first_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[first_name]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>first_name</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDA_RDK_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>last_name</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[last_name]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>last_name</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDA_RDK_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gender</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[gender]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>gender</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDA_RDK_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>past_3_years_bike_related_purchases</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[past_3_years_bike_related_purchases]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>past_3_years_bike_related_purchases</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>DOB</remote-name>
+            <remote-type>7</remote-type>
+            <local-name>[DOB]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>DOB</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>date</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;DATE&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>job_title</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[job_title]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>job_title</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDA_RDK_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>job_industry_category</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[job_industry_category]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>job_industry_category</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDA_RDK_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>wealth_segment</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[wealth_segment]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>wealth_segment</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDA_RDK_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>deceased_indicator</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[deceased_indicator]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>deceased_indicator</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDA_RDK_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>default</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[default]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>default</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDA_RDK_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>owns_car</remote-name>
+            <remote-type>130</remote-type>
+            <local-name>[owns_car]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>owns_car</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <collation flag='1' name='LDA_RDK_S2' />
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;WSTR&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>tenure</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[tenure]</local-name>
+            <parent-name>[CustomerDemographic]</parent-name>
+            <remote-alias>tenure</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='DebugRemoteType'>&quot;I8&quot;</attribute>
+            </attributes>
+            <_.fcp.ObjectModelEncapsulateLegacy.true...object-id>[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]</_.fcp.ObjectModelEncapsulateLegacy.true...object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <_.fcp.ObjectModelTableType.true...column caption='CustomerDemographic' datatype='table' name='[__tableau_internal_object_id__].[CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B]' role='measure' type='quantitative' />
+      <layout _.fcp.SchemaViewerObjectModel.false...dim-percentage='0.5' _.fcp.SchemaViewerObjectModel.false...measure-percentage='0.4' dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;Denmark&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+        <objects>
+          <object caption='CustomerDemographic' id='CustomerDemographic_699D543C51324401B6B6E0E5BEA2087B'>
+            <properties context=''>
+              <relation connection='excel-direct.1tymfi808fjaqo1afmjyn04sz98b' name='CustomerDemographic' table='[CustomerDemographic$]' type='table'>
+                <columns gridOrigin='A1:M4002:no:A1:M4002:1' header='yes' lost='0' outcome='1' processed='16406'>
+                  <column datatype='integer' name='customer_id' ordinal='0' />
+                  <column datatype='string' name='first_name' ordinal='1' />
+                  <column datatype='string' name='last_name' ordinal='2' />
+                  <column datatype='string' name='gender' ordinal='3' />
+                  <column datatype='integer' name='past_3_years_bike_related_purchases' ordinal='4' />
+                  <column datatype='date' name='DOB' ordinal='5' />
+                  <column datatype='string' name='job_title' ordinal='6' />
+                  <column datatype='string' name='job_industry_category' ordinal='7' />
+                  <column datatype='string' name='wealth_segment' ordinal='8' />
+                  <column datatype='string' name='deceased_indicator' ordinal='9' />
+                  <column datatype='string' name='default' ordinal='10' />
+                  <column datatype='string' name='owns_car' ordinal='11' />
+                  <column datatype='integer' name='tenure' ordinal='12' />
+                </columns>
+              </relation>
+            </properties>
+          </object>
+        </objects>
+      </_.fcp.ObjectModelEncapsulateLegacy.true...object-graph>
+    </datasource>
+  </datasources>
+  <worksheets>
+    <worksheet name='Sheet 1'>
+      <table>
+        <view>
+          <datasources />
+          <aggregation value='true' />
+        </view>
+        <style />
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+          </pane>
+        </panes>
+        <rows />
+        <cols />
+      </table>
+      <simple-id uuid='{582428E4-AED3-4115-BBA9-5D10B6AB0419}' />
+    </worksheet>
+  </worksheets>
+  <windows source-height='30'>
+    <window class='worksheet' maximized='true' name='Sheet 1'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='31'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{A6E719B1-CB65-49FA-93FF-C6A58B0D713D}' />
+    </window>
+  </windows>
+</workbook>
