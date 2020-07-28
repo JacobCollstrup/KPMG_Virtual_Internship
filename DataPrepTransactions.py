@@ -4,6 +4,7 @@ from datetime import timedelta
 from str2date import str2date
 from string_checker import string_checker
 from y_or_n_checker import y_or_n_checker
+from smart_number_checker import smart_number_checker
 
 CustomerAddress = pd.read_csv("CustomerAddress.csv")
 CustomerDemographic = pd.read_csv("CustomerDemographics.csv")
@@ -36,7 +37,7 @@ def column_str_check(col):
     if len(tracker) == 0:
         return "column is ok."
     else:
-        return tracker,string
+        return tracker, string
 
 def gender_check_length(col):
     tracker = []
@@ -121,6 +122,22 @@ def checking_yes_or_no(col):
     else:
         return tracker, false_reports
 
+def checking_numbers(col):
+    tracker = []
+    errors = []
+    counter = -1
+    for element in col:
+        counter += 1
+        if smart_number_checker(element) == True:
+            pass
+        else:
+            tracker.append(counter)
+            errors.append(element)
+    if len(tracker) == 0:
+        return "column is ok"
+    else:
+        return tracker, errors
+
 
 
 customer_id_check = column_int_check(CustomerDemographic["customer_id"])
@@ -177,7 +194,8 @@ owns_car = checking_yes_or_no(CustomerDemographic["owns_car"])
 print("Result for owns_car:")
 print(owns_car)
 
-tenure_check = column_int_check(CustomerDemographic["tenure"])
+tenure_check = checking_numbers(CustomerDemographic["tenure"])
 print("Result for tenure:")
-print(tenure_check)
+print(tenure_check[0])
+print(tenure_check[1])
 
