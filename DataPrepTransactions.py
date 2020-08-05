@@ -1,10 +1,10 @@
 import pandas as pd
 from datetime import date
 from datetime import timedelta
-from str2date import str2date
-from string_checker import string_checker
-from y_or_n_checker import y_or_n_checker
-from smart_number_checker import smart_number_checker
+from data_check_core import str2date
+from data_check_core import string_checker
+from data_check_core import y_or_n_checker
+from data_check_core import smart_number_checker
 
 CustomerAddress = pd.read_csv("CustomerAddress.csv")
 CustomerDemographic = pd.read_csv("CustomerDemographics.csv")
@@ -38,7 +38,7 @@ def column_str_check(col):
         return "column is ok."
     else:
         return tracker, string
-
+"""
 def gender_check_length(col):
     tracker = []
     gender = []
@@ -52,6 +52,22 @@ def gender_check_length(col):
         return "column is ok."
     else:
         return tracker, gender
+"""
+def gender_check_length(col):
+    tracker = []
+    false_reports = []
+    counter = -1
+    for element in col:
+        counter += 1
+        if y_or_n_checker(element, {"m", "M", "Male", "male", "f", "F", "Female", "female"}):
+            pass
+        else:
+            tracker.append(counter)
+            false_reports.append(element)
+    if len(tracker) == 0:
+        return "column is ok."
+    else:
+        return tracker, false_reports
 
 
 def datetime_check_format(col):
@@ -77,7 +93,7 @@ def datetime_check_logic(col):
     illogical_dates = []
     counter = -1
     criteria_old = timedelta(days=36500)
-    criteria_young = timedelta(days= 365*18)
+    criteria_young = timedelta(days=365*18)
     for element in col:
         counter += 1
         if date.today() - element < criteria_young or date.today() - element > criteria_old:
@@ -138,7 +154,11 @@ def checking_numbers(col):
     else:
         return tracker, errors
 
-
+print("###################################################################")
+print("")
+print("Starting check of demographic data")
+print("")
+print("###################################################################")
 
 customer_id_check = column_int_check(CustomerDemographic["customer_id"])
 print("Result for customer ID check:")
@@ -199,3 +219,65 @@ print("Result for tenure:")
 print(tenure_check[0])
 print(tenure_check[1])
 
+print("###################################################################")
+print("")
+print("Starting check of address data")
+print("")
+print("###################################################################")
+
+customer_id_check = checking_numbers(CustomerAddress["customer_id"])
+print("Result for ID check:")
+print(customer_id_check)
+
+address_check = string_for_category(CustomerAddress["address"])
+print("Result for address check:")
+print(address_check)
+
+postcode_check = checking_numbers(CustomerAddress["postcode"])
+print("Result for postcode check:")
+print(postcode_check)
+
+state_check = string_for_category(CustomerAddress["state"])
+print("Result for state check:")
+print(state_check)
+
+country_check = string_for_category(CustomerAddress["country"])
+print("Result for country check:")
+print(country_check)
+
+property_valuation_check = checking_numbers(CustomerAddress["property_valuation"])
+print("Result of property valuation check")
+print(property_valuation_check)
+
+print("###################################################################")
+print("")
+print("Starting check of new customer list data")
+print("")
+print("###################################################################")
+
+first_name_check = column_str_check(NewCustomerList["first_name"])
+print("Result for first name check:")
+print(first_name_check)
+
+last_name_check = column_str_check(NewCustomerList["last_name"])
+print("Result for last name check:")
+print(last_name_check[0])
+print(last_name_check[1])
+
+gender_check = gender_check_length(NewCustomerList["gender"])
+print("Result for gender check:")
+print(gender_check[0])
+print(gender_check[1])
+
+bike_purchase_history_check = checking_numbers(NewCustomerList["past_3_years_bike_related_purchases"])
+print("Result for purchase history check:")
+print(bike_purchase_history_check)
+
+DOB_tracker, DOB_false_dates, DOB_true_dates = datetime_check_format(NewCustomerList["DOB"])
+print("Result of DOB check:")
+print(DOB_tracker)
+print(DOB_false_dates)
+
+DOB_logic_tracker, DOB_illogical_dates = datetime_check_logic(DOB_true_dates)
+print(DOB_illogical_dates)
+print(DOB_logic_tracker)

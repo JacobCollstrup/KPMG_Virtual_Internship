@@ -1,5 +1,6 @@
 import datetime
 
+
 def str2date(string: str):
     try:
         datetime_holder = datetime.datetime.strptime(string, "%Y-%m-%d")
