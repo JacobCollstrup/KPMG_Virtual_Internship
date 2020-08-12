@@ -2,7 +2,7 @@ from str2date import str2date
 from datetime import date
 from datetime import timedelta
 from string_checker import string_checker
-from data_check_core import smart_number_checker
+from smart_number_checker import smart_number_checker
 import pandas as pd
 import math
 dates = ['1953-10-12', '1980-12-16', '1954-01-20', '1961-10-03', '1977-05-13', '1966-09-16', '1976-02-23', '1962-03-30', '1973-03-10', None]
@@ -158,6 +158,23 @@ def datetime_check_logic(col):
         return tracker, illogical_dates
 
 
+def checking_numbers(col):
+    tracker = []
+    errors = []
+    counter = -1
+    for element in col:
+        counter += 1
+        if smart_number_checker(element) == True:
+            pass
+        else:
+            tracker.append(counter)
+            errors.append(element)
+    if len(tracker) == 0:
+        return "column is ok"
+    else:
+        return tracker, errors
+
+
 print("###################################################################")
 print("")
 print("Starting check of demographic data")
@@ -175,8 +192,8 @@ DOB_logic_tracker_CD, DOB_illogical_dates_CD = datetime_check_logic(DOB_true_dat
 print(DOB_illogical_dates_CD)
 print(DOB_logic_tracker_CD)
 
-for date in DOB_true_dates_CD:
-    print(f"{date}, {type(date)}")
+for element in DOB_true_dates_CD:
+    print(f"{element}, {type(element)}")
 
 
 print("###################################################################")
@@ -192,14 +209,17 @@ print(DOB_false_dates_NC)
 
 #print(DOB_true_dates_NC)
 
-"""
-for date in DOB_true_dates_NC:
-    print(f"{date}, {type(date)}")
+
+for element in DOB_true_dates_NC:
+    print(f"{element}, {type(element)}")
 print("#######################")
 print(len(DOB_true_dates_NC))
+print(type(DOB_true_dates_NC))
+print(DOB_true_dates_NC)
 
+result = datetime_check_logic(DOB_true_dates_NC)
+print(result)
 
-DOB_logic_tracker_NC, DOB_illogical_dates_NC = datetime_check_logic(DOB_true_dates_NC)
-print(DOB_illogical_dates_NC)
-print(DOB_logic_tracker_NC)
-"""
+property_valuation_check = checking_numbers(NewCustomerList["property_valuation"])
+print("Result of property valuation check")
+print(property_valuation_check)

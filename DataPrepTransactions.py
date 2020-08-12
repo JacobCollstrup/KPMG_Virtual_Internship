@@ -5,6 +5,7 @@ from data_check_core import str2date
 from data_check_core import string_checker
 from data_check_core import y_or_n_checker
 from data_check_core import smart_number_checker
+from data_check_core import str2date2
 
 CustomerAddress = pd.read_csv("CustomerAddress.csv")
 CustomerDemographic = pd.read_csv("CustomerDemographics.csv")
@@ -79,6 +80,21 @@ def datetime_check_format(col):
         counter +=1
         if isinstance(str2date(element), date):
             true_dates.append(str2date(element))
+        else:
+            tracker.append(counter)
+            false_dates.append(str2date(element))
+
+    return tracker, false_dates, true_dates
+
+def datetime_check_format2(col):
+    tracker = []
+    false_dates = []
+    true_dates = []
+    counter = -1
+    for element in col:
+        counter +=1
+        if isinstance(str2date2(element), date):
+            true_dates.append(str2date2(element))
         else:
             tracker.append(counter)
             false_dates.append(str2date(element))
@@ -278,6 +294,87 @@ print("Result of DOB check:")
 print(DOB_tracker)
 print(DOB_false_dates)
 
-DOB_logic_tracker, DOB_illogical_dates = datetime_check_logic(DOB_true_dates)
-print(DOB_illogical_dates)
-print(DOB_logic_tracker)
+DOB_logic_result = datetime_check_logic(DOB_true_dates)
+print(DOB_logic_result)
+
+job_title_check = column_str_check(NewCustomerList["job_title"])
+print("Result for job_title check:")
+print(job_title_check[0])
+print(job_title_check[1])
+
+job_industry_category = string_for_category(NewCustomerList["job_industry_category"])
+print("Result for job_industry_category:")
+print(job_industry_category[0])
+print(job_industry_category[1])
+
+wealth_segment_category = string_for_category(NewCustomerList["wealth_segment"])
+print("Result for wealth_segment:")
+print(wealth_segment_category)
+
+deceased_indicator = checking_yes_or_no(NewCustomerList["deceased_indicator"])
+print("Result for deceased_indicator:")
+print(deceased_indicator)
+
+owns_car = checking_yes_or_no(NewCustomerList["owns_car"])
+print("Result for owns_car:")
+print(owns_car)
+
+tenure_check = checking_numbers(NewCustomerList["tenure"])
+print("Result for tenure:")
+print(tenure_check)
+
+address_check = string_for_category(NewCustomerList["address"])
+print("Result for address check:")
+print(address_check)
+
+postcode_check = checking_numbers(NewCustomerList["postcode"])
+print("Result for postcode check:")
+print(postcode_check)
+
+state_check = string_for_category(NewCustomerList["state"])
+print("Result for state check:")
+print(state_check)
+
+country_check = string_for_category(NewCustomerList["country"])
+print("Result for country check:")
+print(country_check)
+
+property_valuation_check = checking_numbers(NewCustomerList["property_valuation"])
+print("Result of property valuation check")
+print(property_valuation_check)
+
+property_valuation_check = checking_numbers(NewCustomerList["Rank"])
+print("Result of Rank check")
+print(property_valuation_check)
+
+property_valuation_check = checking_numbers(NewCustomerList["Value"])
+print("Result of Value check")
+print(property_valuation_check)
+
+print("###################################################################")
+print("")
+print("Starting check of transactions data")
+print("")
+print("###################################################################")
+
+customer_id_check = checking_numbers(Transactions["transaction_id"])
+print("Result for Transaction ID check:")
+print(customer_id_check)
+
+customer_id_check = checking_numbers(Transactions["product_id"])
+print("Result for Product ID check:")
+print(customer_id_check)
+
+customer_id_check = checking_numbers(Transactions["customer_id"])
+print("Result for Costumer ID check:")
+print(customer_id_check)
+
+Transaction_dates_check = datetime_check_format2(Transactions["transaction_date"])
+print("Result of Transaction dates check:")
+print(DOB_tracker)
+print(DOB_false_dates)
+
+tracker = -1
+for days in Transactions["transaction_date"]:
+    tracker += 1
+    print(f"{days}, {tracker}, {type(days)}")

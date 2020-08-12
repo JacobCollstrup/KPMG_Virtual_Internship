@@ -12,6 +12,15 @@ def str2date(string: str):
     except TypeError:
         return string
 
+def str2date2(string: str):
+    try:
+        datetime_holder = datetime.datetime.strptime(string, "%d-%m-%Y")
+        return datetime_holder.date()
+    except ValueError:
+        return string
+    except TypeError:
+        return string
+
 
 # This function returns true if the field contains a string. It includes an exclusion set so you can exclude certain
 # strings, fx blanks and such.
@@ -31,10 +40,19 @@ def y_or_n_checker(string: str, allowed_set: set):
 
 
 # This function checks whether a field contains a number or not. It accepts floats and ints, but not nans.
-def smart_number_checker(number: int or float):
-    if math.isnan(number):
-        return number
-    if isinstance(number, (int, float)) is False:
-        return number
-    else:
-        return True
+def smart_number_checker(input: int or float or str):
+    try:
+        if isinstance(input, str):
+            input = input.replace(",", ".")
+
+        number = float(input)
+        if math.isnan(number):
+            return number
+        if isinstance(number, (int, float)) is False:
+            return number
+        else:
+            return True
+
+    except ValueError:
+        print("This is not a number!")
+
