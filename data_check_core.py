@@ -56,3 +56,21 @@ def smart_number_checker(input: int or float or str):
     except ValueError:
         print("This is not a number!")
 
+def bool_checker(input: float or int):
+    if input.is_integer():
+        value = int(input)
+        if value == 0 or value == 1:
+            return True
+        else:
+            return False
+    else:
+        return False
+
+def remove_char_from_number(input: str, char: str):
+    if isinstance(input, str):
+        temp_number = input.replace(".", "")
+        temp_number = temp_number.replace(",", ".")
+        number = float(temp_number.replace(f"{char}", ""))
+        return number
+    else:
+        return False

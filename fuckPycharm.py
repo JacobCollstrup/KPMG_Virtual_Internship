@@ -3,13 +3,19 @@ from datetime import date
 from datetime import timedelta
 from string_checker import string_checker
 from smart_number_checker import smart_number_checker
+from data_check_core import str2date2
 import pandas as pd
 import math
+from data_check_core import bool_checker
+from data_check_core import remove_char_from_number
+
 dates = ['1953-10-12', '1980-12-16', '1954-01-20', '1961-10-03', '1977-05-13', '1966-09-16', '1976-02-23', '1962-03-30', '1973-03-10', None]
 NewCustomerList = pd.read_csv("NewCustomerList.csv")
 CustomerDemographic = pd.read_csv("CustomerDemographics.csv")
+Transactions = pd.read_csv("Transactions.csv")
 
 test_numbers = pd.read_csv("test_numbers.csv")
+
 """
 first_date = str2date(dates[0])
 print(first_date)
@@ -57,9 +63,9 @@ for string in strings:
 
 print(false_strings)
 print(tracker)
-"""
 
-"""
+
+
 column_of_numbers = [0, 1 , 5, 9,None, 8, ' ']
 
 for number in column_of_numbers:
@@ -91,8 +97,8 @@ print(errors)
 myString = ""
 
 print(isinstance(myString, str))
-"""
-"""
+
+
 def column_str_check(col):
     tracker = []
     string = []
@@ -120,7 +126,7 @@ for name in last_names:
     i += 1
 
 print(type(last_names[12]))
-"""
+
 
 def datetime_check_format(col):
     tracker = []
@@ -223,3 +229,76 @@ print(result)
 property_valuation_check = checking_numbers(NewCustomerList["property_valuation"])
 print("Result of property valuation check")
 print(property_valuation_check)
+
+def datetime_check_format2(col):
+    tracker = []
+    false_dates = []
+    true_dates = []
+    counter = -1
+    for element in col:
+        counter +=1
+        if isinstance(str2date2(element), date):
+            true_dates.append(str2date2(element))
+        else:
+            tracker.append(counter)
+            false_dates.append(str2date(element))
+
+    return tracker, false_dates, true_dates
+
+
+
+dates_list = []
+
+for day in Transactions["transaction_date"]:
+    dates_list.append(str2date2(day))
+
+tracker = -1
+for day in dates_list:
+    tracker += 1
+    print(f"{day}, {tracker}, {type(day)}")
+    
+
+def datetime_check_format2(col):
+    tracker = []
+    false_dates = []
+    correct_dates = []
+    counter = -1
+    for day in col:
+        counter += 1
+        if str2date2(day) == type(date):
+            correct_dates.append(str2date2(day))
+        else:
+            false_dates.append(day)
+            tracker.append(counter)
+    return correct_dates, false_dates, tracker
+
+Transaction_dates_check, false_dates, tracker = datetime_check_format2(Transactions["transaction_date"])
+print("Result of Transaction dates check:")
+print(tracker)
+print(false_dates)
+
+
+
+online_orders = []
+missing_data = []
+tracker = []
+counter = -1
+for element in Transactions["online_order"]:
+    counter +=1
+    if bool_checker(element) == True:
+        online_orders.append(int(element))
+    else:
+        missing_data.append(element)
+        tracker.append(counter)
+        print(f"{element}, {type(element)}, index: {counter}")
+
+print(f"Length of tracker: {len(tracker)}")
+
+"""
+list_of_prices = []
+for element in Transactions["standard_cost"]:
+    list_of_prices.append(remove_char_from_number(element, "$"))
+
+for price in list_of_prices:
+    print(f"{price}, {type(price)}")
+

@@ -6,6 +6,8 @@ from data_check_core import string_checker
 from data_check_core import y_or_n_checker
 from data_check_core import smart_number_checker
 from data_check_core import str2date2
+from data_check_core import bool_checker
+from data_check_core import remove_char_from_number
 
 CustomerAddress = pd.read_csv("CustomerAddress.csv")
 CustomerDemographic = pd.read_csv("CustomerDemographics.csv")
@@ -85,6 +87,7 @@ def datetime_check_format(col):
             false_dates.append(str2date(element))
 
     return tracker, false_dates, true_dates
+
 
 def datetime_check_format2(col):
     tracker = []
@@ -169,6 +172,56 @@ def checking_numbers(col):
         return "column is ok"
     else:
         return tracker, errors
+
+def checking_string_in_category(col):
+    online_orders = []
+    missing_data = []
+    tracker = []
+    counter = -1
+    for element in Transactions["online_order"]:
+        counter += 1
+        if bool_checker(element) == True:
+            online_orders.append(int(element))
+        else:
+            missing_data.append(element)
+            tracker.append(counter)
+            # print(f"{element}, {type(element)}, index: {counter}")
+    return online_orders, missing_data, tracker
+
+
+
+
+def checking_approved_or_no(col):
+    tracker = []
+    false_reports = []
+    counter = -1
+    for element in col:
+        counter += 1
+        if y_or_n_checker(element, {"Approved", "APPROVED", "approved", "Cancelled", "CANCELLED", "cancelled"}):
+            pass
+        else:
+            tracker.append(counter)
+            false_reports.append(element)
+    if len(tracker) == 0:
+        return "column is ok."
+    else:
+        return tracker, false_reports
+
+def fix_numbers(col):
+    tracker = []
+    erroneous_fields = []
+    converted_numbers = []
+    counter = -1
+    for element in col:
+        counter += 1
+        if remove_char_from_number(element, "$"):
+            converted_numbers.append(remove_char_from_number(element, "$"))
+        else:
+            erroneous_fields.append(element)
+            tracker.append(counter)
+    return converted_numbers, erroneous_fields, tracker
+
+
 
 print("###################################################################")
 print("")
@@ -369,12 +422,49 @@ customer_id_check = checking_numbers(Transactions["customer_id"])
 print("Result for Costumer ID check:")
 print(customer_id_check)
 
-Transaction_dates_check = datetime_check_format2(Transactions["transaction_date"])
+Transaction_dates_check, false_dates, tracker = datetime_check_format2(Transactions["transaction_date"])
 print("Result of Transaction dates check:")
-print(DOB_tracker)
-print(DOB_false_dates)
+print(f"There are {len(false_dates)} errors in transaction dates.")
 
-tracker = -1
-for days in Transactions["transaction_date"]:
-    tracker += 1
-    print(f"{days}, {tracker}, {type(days)}")
+online_order_check, missing_fields, tracker = checking_string_in_category(Transactions["online_order"])
+print("Result of Online order check:")
+print(f"There are {len(missing_fields)} errors in online order column.")
+
+order_status = checking_approved_or_no(Transactions["order_status"])
+print("Result for order_status:")
+print(order_status)
+
+tracker, brands  = column_str_check(Transactions["brand"])
+print("Result for brands column:")
+print(f"There are {len(tracker)} missing entries in brand.")
+
+tracker, product_line = column_str_check(Transactions["product_line"])
+print("Result for product_line column:")
+print(f"There are {len(tracker)} missing entries in product_line.")
+
+tracker, product_class = column_str_check(Transactions["product_class"])
+print("Result for product_class column:")
+print(f"There are {len(tracker)} missing entries in product_class.")
+
+tracker, product_size = column_str_check(Transactions["product_size"])
+print("Result for product_size column:")
+print(f"There are {len(tracker)} missing entries in product_size.")
+
+list_price_check = checking_numbers(Transactions["list_price"])
+print("Result for list_price:")
+print(list_price_check)
+
+standard_cost_check, errors, tracker = fix_numbers(Transactions["standard_cost"])
+print("Result of standard_cost check:")
+print(f"There are {len(standard_cost_check)} correctly converted prices.")
+print(f"There are {len(tracker)} errors in standard_cost column.")
+
+for i in range(len(tracker)):
+    print(f"{errors[i]}, {tracker[i]}")
+
+product_first_sold_errors, tracker = checking_numbers(Transactions["product_first_sold_date"])
+print("Result for product_first_sold_date check:")
+print(f"There are {len(product_first_sold_errors)} errors in the column.")
+
+for i in range(len(tracker)):
+    print(f"{tracker[i]}, {product_first_sold_errors[i]}")
